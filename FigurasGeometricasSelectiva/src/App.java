@@ -1,32 +1,33 @@
 import java.util.Scanner;
 public class App {
     public static double altura, radio, generatriz, areaZonaEsferica, volumenZonaEsferica;
-    public static double areatotal, arealateral, volumen, areaPentagonal, volumenCasquete, areaCasquete;;
-    public static double nGrado, arista, area, apotema;
+    public static double areatotal, arealateral, volumen, areaPentagonal, volumenCasquete, areaCasquete;
+    public static double nGrado, arista, area, apotema, diametro, longitudLado, ancho, diagonal;
     public static double radiomayor, radiomenor, radiomayorCasquete, alturaCasquete;
-    
+    public static double distancialados,apotemaCentral, aBase, distanciaLados, pBase, anguloradianes;
+    public static int numeroLados = 5;
     public static byte opc;
     public static void main(String[] args) throws Exception {
         Scanner scanner = new Scanner(System.in);
 
         System.out.println("FIGURAS GEOMETRICAS");
         System.out.println("¿Que figura desea hacer?");
-        System.out.println("1) Cilindro");
-        System.out.println("2) Cono");
-        System.out.println("3) Cuña Esferica");
-        System.out.println("4) Dodecaedro");
-        System.out.println("5) Esfera");
-        System.out.println("6) Hexaedro");
-        System.out.println("7) Huso Esferico");
-        System.out.println("8) Icosaedro");
-        System.out.println("9) Octaedro");
-        System.out.println("10) Ortoedro");
-        System.out.println("11) Piramide");
-        System.out.println("12) Prisma");
-        System.out.println("13) Tetraedro");
-        System.out.println("14) Tronco de cono");
-        System.out.println("15) Tronco de piramide");
-        System.out.println("16) Salir");
+        System.out.println("1) Cilindro\n" + 
+        "2) Cono\n" +
+        "3) Cuña Esferica\n" +
+        "4) Dodecaedro\n" +
+        "5) Esfera\n" +
+        "6) Hexaedro\n" +
+        "7) Huso Esferico\n" +
+        "8) Icosaedro\n" +
+        "9) Octaedro\n" +
+        "10) Ortoedro\n" +
+        "11) Piramide\n" +
+        "12) Prisma\n" +
+        "13) Tetraedro\n" +
+        "14) Tronco de cono\n" +
+        "15) Tronco de piramide\n" +
+        "16) Salir");
         
         do {
           opc = scanner.nextByte();  
@@ -144,28 +145,131 @@ public class App {
         System.out.println("el volumen del casquete esferico es: "+ volumenCasquete);
             }
             case 6->{
+        System.out.println("HEXAEDRO");
+        System.out.print("Ingrese la arista: ");
+        arista = scanner.nextDouble();
 
+        area = 6 * (arista*arista);
+        volumen = (arista*arista*arista);
+        diametro = arista * Math.sqrt(3);
+
+        System.out.println(":::::::::::::::::::::::::::");
+        System.out.println("El area es: "+ area);
+        System.out.println("El volumen es: " + volumen);
+        System.out.println("La diametro es: " + diametro);
+        
             }
             case 7->{
+        System.out.println("HUSO ESFERICO");
+        System.out.print("Ingrese el radio: ");
+        radio = scanner.nextDouble();
+        System.out.print
+        ("Ingrese los grados: ");
+        nGrado = scanner.nextDouble();
 
+        area = (4 * (3.1416) * (radio*radio) * nGrado)/360;
+        System.out.println(":::::::::::::::::::::::::::::::::::");
+        System.out.println("El area es: "+ area);
             }
             case 8->{
+        System.out.println("ICOSAEDRO");
+        System.out.print("Ingrese la arista: ");
+        arista = scanner.nextDouble();
 
+        area = 5 * (arista*arista) * Math.sqrt(3);
+        volumen = ((5 * (3 + Math.sqrt(5)))/12) * (arista * arista * arista);
+
+        System.out.println(":::::::::::::::::::::::::::");
+        System.out.println("El area es: "+ area);
+        System.out.println("El volumen es: " + volumen);
             }
             case 9->{
+        System.out.println("OCTAEDRO");
+        System.out.print("Ingrese la arista: ");
+        arista = scanner.nextDouble();
 
+        area = 2* (arista*arista) * Math.sqrt(3);
+        volumen = (Math.sqrt(2)/3) * (arista * arista * arista);
+
+        System.out.println(":::::::::::::::::::::::::::");
+        System.out.println("El area es: "+ area);
+        System.out.println("El volumen es: " + volumen);
             }
             case 10->{
+        System.out.println("ORTOEDRO");
+        System.out.print("Ingrese la longitud: ");
+        longitudLado = scanner.nextDouble();
+        System.out.print("Ingrese la anchura: ");
+        ancho = scanner.nextDouble();
+        System.out.print("Ingrese la altura: ");
+        altura = scanner.nextDouble();
 
+        area = 2 * ((longitudLado*ancho) + (longitudLado*altura) + (ancho*altura));
+        diagonal = Math.sqrt((longitudLado*longitudLado) + (ancho*ancho) + (altura*altura));
+        volumen = longitudLado*altura*ancho;
+
+        System.out.println("::::::::::::::::::::::::::::::::::");
+        System.out.println("El area es: "+ area);
+        System.out.println("El diagonal es: "+ diagonal);
+        System.out.println("El volumen es: "+ volumen);
             }
             case 11->{
+        System.out.println("PIRAMIDE");
+        System.out.print("Ingrese la altura: ");
+        altura = scanner.nextDouble();
+        System.out.print("Ingrese la longitud de los lados: ");
+        distancialados = scanner.nextDouble();
+ 
+        apotemaCentral = distancialados/2;
 
+        apotema = Math.sqrt((altura * altura) + (apotemaCentral * apotemaCentral));
+
+        arealateral = ((4 * distancialados) * apotema) / 2 ; 
+        // 4 significa que la piramide tiene 4 lados
+        aBase = distancialados*distancialados;
+        areatotal = arealateral + aBase;
+        volumen = (aBase * altura) / 3;
+
+        System.out.println(":::::::::::::::::::::::::::::::::::");
+
+        System.out.println("El area lateral es: " + arealateral);
+        System.out.println("El area total es: " + areatotal);
+        System.out.println("El volumen es: " + volumen);
             }
             case 12->{
+        System.out.println("PRISMA");
+        System.out.print("Introduzca la altura: ");
+        altura = scanner.nextDouble();
+        System.out.print("Introduzca la distancia de los lados: ");
+        distanciaLados = scanner.nextDouble();
 
+        pBase = numeroLados*distanciaLados;
+        arealateral = pBase * altura;
+
+        anguloradianes = (3.1416/180) * (360/numeroLados);
+        apotema = distanciaLados / (2 * Math.tan(anguloradianes/2));
+        aBase = (pBase * apotema)/2;
+
+        areatotal = arealateral + 2 * aBase;
+        volumen = aBase * altura;
+
+        System.out.println("El area total es: "+areatotal);
+        System.out.println("El area lateral es: "+arealateral);
+        System.out.println("El volumen es: "+volumen);
             }
             case 13->{
+        System.out.println("TETRAEDRO");
+        System.out.print("Ingrese la arista: ");
+        arista = scanner.nextDouble();
 
+        area = (arista*arista) * Math.sqrt(3);
+        volumen = (Math.sqrt(2)/12) * (arista*arista*arista);
+        altura = arista * (Math.sqrt(6)/3);
+
+        System.out.println(":::::::::::::::::::::::::::");
+        System.out.println("El area es: "+ area);
+        System.out.println("El volumen es: " + volumen);
+        System.out.println("La altura es: " + altura);
             }
             case 14->{
 
