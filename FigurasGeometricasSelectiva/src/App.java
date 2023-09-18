@@ -33,7 +33,7 @@ public class App {
         "17) Salir");
         
         do {
-          opc = scanner.nextByte();  
+          opc = scanner.nextByte(); 
         } while (opc <1 || opc > 17);
         
         switch (opc) {
