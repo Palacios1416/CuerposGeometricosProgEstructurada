@@ -1,10 +1,12 @@
 import java.util.Scanner;
 public class App {
-    public static double altura, radio, generatriz, areaZonaEsferica, volumenZonaEsferica;
-    public static double areatotal, arealateral, volumen, areaPentagonal, volumenCasquete, areaCasquete;
-    public static double nGrado, arista, area, apotema, diametro, longitudLado, ancho, diagonal;
-    public static double radiomayor, radiomenor, radiomayorCasquete, alturaCasquete;
-    public static double distancialados,apotemaCentral, aBase, distanciaLados, pBase, anguloradianes;
+    public static double altura, radio, generatriz, areaZonaEsferica, volumenZonaEsferica,
+    areatotal, arealateral, volumen, areaPentagonal, volumenCasquete, areaCasquete,
+    nGrado, arista, area, apotema, diametro, longitudLado, ancho, diagonal,
+    radiomayor, radiomenor, radiomayorCasquete, alturaCasquete, aBasemayor,
+    distancialados,apotemaCentral, aBase, distanciaLados, pBase, anguloradianes,
+    restaRadios, areaLateral, aBasemenor, areaTotal, ladoMayor, ladoMenor,
+    pBasemayor, pBasemenor, catetoAdyacente;
     public static int numeroLados = 5;
     public static byte opc;
     public static void main(String[] args) throws Exception {
@@ -272,9 +274,52 @@ public class App {
         System.out.println("La altura es: " + altura);
             }
             case 14->{
+        System.out.println("TRONCO DE CONO");
+        System.out.print("Ingrese el radio mayor: ");
+        radiomayor = scanner.nextDouble();
+        System.out.print("Ingrese el radio menor: ");
+        radiomenor = scanner.nextDouble();
+        System.out.print("Ingrese la altura: ");
+        altura = scanner.nextDouble();
 
+        restaRadios = radiomayor - radiomenor;
+        generatriz = Math.sqrt((altura*altura) + (restaRadios*restaRadios));
+        /* para calcular la generatriz se utiliza una modificacion en la formula de la hipotenusa
+         * la resta del radiomayor menos el radiomenor es el que se eleva al cuadrado
+         */
+        areaLateral = (3.1416) * generatriz * (radiomayor + radiomenor);
+        aBasemayor = (3.1416) * (radiomayor * radiomayor);
+        aBasemenor = (3.1416) * (radiomenor * radiomenor);
+        areaTotal = areaLateral + aBasemayor + aBasemenor;
+        volumen = ((3.1416) * altura * ((radiomayor*radiomayor) + (radiomenor*radiomenor) + (radiomayor*radiomenor)))/3;
+
+        System.out.println(":::::::::::::::::::::::::::::::::::");
+        System.out.println("El area lateral es: "+ areaLateral);
+        System.out.println("El area total es: "+ areaTotal);
+        System.out.println("El volumen es: "+ volumen);
             }
             case 15->{
+            System.out.print("Ingrese la altura: ");
+        altura = scanner.nextDouble();
+        System.out.print("Ingrese la longitud del lado mayor: ");
+        ladoMayor = scanner.nextDouble();
+        System.out.print("Ingrese la longitud del lado menor: ");
+        ladoMenor = scanner.nextDouble(); 
+
+        aBasemayor = ladoMayor * ladoMayor;
+        aBasemenor = ladoMenor * ladoMenor;
+        pBasemayor = ladoMayor * 4; //4 es la cant de lados
+        pBasemenor = ladoMenor * 4;
+        catetoAdyacente = (ladoMayor/2) - ladoMenor;
+        apotema = Math.sqrt((altura*altura) + (catetoAdyacente*catetoAdyacente));
+        areaLateral = ((pBasemayor + pBasemenor)/2) * apotema;
+        areaTotal = areaLateral + aBasemayor + aBasemenor;
+        volumen = (altura/3) * (aBasemayor + aBasemenor + Math.sqrt(aBasemayor*aBasemenor));
+        
+        System.out.println("::::::::::::::::::::::::::");
+        System.out.println("El area lateral es: " + areaLateral);
+        System.out.println("El area total es: " + areaTotal);
+        System.out.println("El volumen es: " + volumen);
 
             }
             case 16->{
